@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Test</h1>
+
+<div id="result"></div> <!--getting result from json functi-->
+
+
+
+<a href="#" id="get-data">Get JSON data</a>
+<div id="show-data"></div>
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#get-data').click(function () {//toggling link to show data
+            var showData = $('#show-data');
+
+            $.getJSON('http://192.168.1.208:3000/api/v1/url', function (data) { //api url this is my system ip localhost gave security problem
+                console.log(data);
+
+                var items = data.items.map(function (item) {
+                    return item.key + item.value; //parsing json file
+                });
+
+                showData.empty(); //close toggle link
+
+                if (items.length) {
+                    var content = '<li>' + items.join('</li><li>') + '</li>'; //making lists for json content
+                    var list = $('<ul />').html(content);
+                    showData.append(list);
+                }
+            });
+
+            showData.text('Loading the JSON file.'); //show data
+        });
+    });
+
+</script>
+</body>
+</html>
