@@ -28,6 +28,6 @@ exports.debug = (title, obj, status) => {
     status = "";
   }
   if (process.env.DEBUG){
-    console.log(output. obj, status);
+    console.log(output, obj, status);
   }
 };
