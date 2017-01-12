@@ -19,15 +19,23 @@ function returnStringGen(){
 
 }
 exports.returnStringGen = returnStringGen;
+var chalk = require('chalk');
 
 
 exports.debug = (title, obj, status) => {
   const seperator = '\n===================================\n';
   const output = seperator + title + seperator;
-  if (!status){
+
+
+var error = chalk.bold.red
+var success = chalk.green
+
+  if(!status){
     status = "";
   }
-  if (process.env.DEBUG){
-    console.log(output, obj, status);
+
+
+  if (!process.env.DEBUG){
+    console.log(success(output), obj, status);
   }
 };
