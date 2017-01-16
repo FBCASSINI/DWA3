@@ -1,5 +1,6 @@
 const user = require('../../models/user');
 const util = require('../../util');
+const express = require('express');
 
 module.exports = (express) => {
   const router = express.Router();
@@ -66,6 +67,5 @@ module.exports = (express) => {
       res.status(200).json(data);
     });
   });
-
   return router;
 };
